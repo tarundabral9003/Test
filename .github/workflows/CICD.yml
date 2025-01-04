@@ -20,7 +20,8 @@ jobs:
     - name: Set up .NET SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.x'  # Use the .NET version that matches your project
+        dotnet-version: '6.x'  # Use the .NET version that matches your project
+       
 
     - name: Restore dependencies
       run: dotnet restore
