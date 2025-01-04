@@ -23,8 +23,8 @@ jobs:
         dotnet-version: '6.x'  # Use the .NET version that matches your project
        
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Restore dependencies    
+      run: dotnet restore ./oops_concept/oops_concept/oops_concept.csproj
 
     - name: Build project
       run: dotnet build --configuration Release
