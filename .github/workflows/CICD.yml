@@ -24,7 +24,7 @@ jobs:
        
 
     - name: Restore dependencies    
-      run: dotnet restore ./oops_concept/oops_concept.csproj
+      run: dotnet restore oops_concept/oops_concept.csproj
 
     - name: Build project
       run: dotnet build --configuration Release
