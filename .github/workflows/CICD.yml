@@ -20,17 +20,17 @@ jobs:
     - name: Set up .NET SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '6.x'  # Use the .NET version that matches your project
+        dotnet-version: '7.x'  # Use the .NET version that matches your project
        
 
     - name: Restore dependencies    
-      run: dotnet restore oops_concept/oops_concept.csproj
+      run: dotnet restore  ./Test/tree/main/oops_concept/oops_concept/oops_concept.csproj
 
     - name: Build project
-      run: dotnet build --configuration Release
+      run: dotnet build  ./Test/tree/main/oops_concept/oops_concept/oops_concept.csproj--configuration Release
 
     - name: Run tests
-      run: dotnet test --configuration Release --no-restore --verbosity normal
+      run: dotnet test  ./Test/tree/main/oops_concept/oops_concept/oops_concept.csproj--configuration Release --no-restore --verbosity normal
 
     - name: Publish artifacts (optional)
-      run: dotnet publish --configuration Release --output ./publish
+      run: dotnet publish  ./Test/tree/main/oops_concept/oops_concept/oops_concept.csproj --configuration Release --output ./publish
