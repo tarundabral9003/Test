@@ -1,0 +1,40 @@
+name: .NET Core CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up .NET SDK
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0'
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore oops_concept/oops_concept.sln  # Use the relative path to the solution file
+
+      # Build the solution
+      - name: Build the solution
+        run: dotnet build oops_concept/oops_concept.sln --configuration Release
+
+      # Run tests
+      - name: Run tests
+        run: dotnet test oops_concept/oops_concept.sln --configuration Release
+
+      # Publish artifacts (optional)
+      - name: Publish Artifacts
+        run: dotnet publish oops_concept/oops_concept.sln --configuration Release --output ./publish
