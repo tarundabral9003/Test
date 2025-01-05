@@ -1,0 +1,30 @@
+name: .NET Core CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: windows-latest  # Specifies that the job runs on the latest Windows environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0'  # Adjust the version of .NET you're using
+
+      - name: Restore dependencies
+        run: dotnet restore myapplication.sln
+
+      - name: Build the application
+        run: dotnet build oops_concept/oops_concept.sln  --configuration Release
+
+      - name: Run unit tests
+        run: dotnet test oops_concept/oops_concept.sln  --configuration Release
