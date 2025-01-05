@@ -25,18 +25,18 @@ jobs:
 
       # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore ./Test/tree/main/oops_concept.sln # Replace with the correct path to your .sln file
+        run: dotnet restore C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln # Replace with the correct path to your .sln file
 
       # Build the project
       - name: Build the solution
-        run: dotnet build ./Test/tree/main/oops_concept.sln --configuration Release
+        run: dotnet build C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln --configuration Release
 
       # Run tests
       - name: Run tests
-        run: dotnet test ./Test/tree/main/oops_concept.sln --configuration Release
+        run: dotnet test C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln --configuration Release
 
       # Publish build artifacts (optional, for deployment steps)
       - name: Publish Artifacts
-        run: dotnet publish ./Test/tree/main/oops_concept.sln --configuration Release --output ./publish
+        run: dotnet publish C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln --configuration Release --output ./publish
 
   # You can add more jobs here, for example for deployment
