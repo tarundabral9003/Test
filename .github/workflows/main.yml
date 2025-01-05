@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # You can use other runners like 'windows-latest' or 'macos-latest'
+    runs-on: ubuntu-latest
     
     steps:
       # Checkout code
@@ -21,22 +21,20 @@ jobs:
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0' # Specify the version of .NET you are using
+          dotnet-version: '7.0'
 
       # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln # Replace with the correct path to your .sln file
+        run: dotnet restore oops_concept.sln  # Use the relative path to the solution file
 
-      # Build the project
+      # Build the solution
       - name: Build the solution
-        run: dotnet build C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln --configuration Release
+        run: dotnet build oops_concept.sln --configuration Release
 
       # Run tests
       - name: Run tests
-        run: dotnet test C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln --configuration Release
+        run: dotnet test oops_concept.sln --configuration Release
 
-      # Publish build artifacts (optional, for deployment steps)
+      # Publish artifacts (optional)
       - name: Publish Artifacts
-        run: dotnet publish C:\Users\admin\Documents\GitHub\OOPs_concept\oops_concept.sln --configuration Release --output ./publish
-
-  # You can add more jobs here, for example for deployment
+        run: dotnet publish oops_concept.sln --configuration Release --output ./publish
