@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+# Trigger events for the workflow (push to master/main or pull request)
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull request to main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Choose the runner environment, e.g., ubuntu, windows
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up dependencies (example for Node.js)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Node.js version
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install  # Command to install dependencies
+
+      # Step 4: Run tests (example for Node.js)
+      - name: Run tests
+        run: npm test  # Command to run tests
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build  # Ensure this job runs only after the 'build' job
+    steps:
+      # Step 1: Checkout the code again
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Deploy the app (example for AWS or a custom server)
+      - name: Deploy to Production
+        run: |
+          # Example deployment command
+          echo "Deploying to production"
+          # Add your deployment scripts here
