@@ -25,16 +25,16 @@ jobs:
 
       # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore oops_concept.sln  # Use the relative path to the solution file
+        run: dotnet restore oops_concept/oops_concept.sln  # Use the relative path to the solution file
 
       # Build the solution
       - name: Build the solution
-        run: dotnet build oops_concept.sln --configuration Release
+        run: dotnet build oops_concept/oops_concept.sln --configuration Release
 
       # Run tests
       - name: Run tests
-        run: dotnet test oops_concept.sln --configuration Release
+        run: dotnet test oops_concept/oops_concept.sln --configuration Release
 
       # Publish artifacts (optional)
       - name: Publish Artifacts
-        run: dotnet publish oops_concept.sln --configuration Release --output ./publish
+        run: dotnet publish oops_concept/oops_concept.sln --configuration Release --output ./publish
